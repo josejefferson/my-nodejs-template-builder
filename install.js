@@ -97,7 +97,7 @@ inquirer.prompt([
 	}
 
 	// Remove o ".git"
-	if (fs.existsSync('.git')) fs.rmdirSync('.git')
+	if (fs.existsSync('.git')) fs.rmdirSync('.git', { recursive: true, force: true })
 
 	// Remove o "README.md"
 	if (fs.existsSync('README.md')) fs.unlinkSync('README.md')
@@ -214,9 +214,9 @@ ${answers.socketio ? 'server' : 'app'}.listen(process.env.PORT || 3000, () => {
 	fs.writeFileSync('package.json', JSON.stringify(packageJSON, null, '  '))
 
 
-	console.log('┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓')
-	console.log('┃ 7/7 Removendo pacotes do instalador ┃')
-	console.log('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛')
+	console.log('┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓')
+	console.log('┃ 7/7 Removendo arquivos do instalador ┃')
+	console.log('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛')
 
 
 	execSync((answers.yarn ? 'yarn remove ' : 'npm uninstall ') + 'inquirer', { stdio: [0, 1, 2] })
